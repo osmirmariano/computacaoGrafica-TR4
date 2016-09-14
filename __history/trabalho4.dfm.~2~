@@ -1,0 +1,94 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Computa'#231#227'o Gr'#225'fica - Trabalho 04'
+  ClientHeight = 441
+  ClientWidth = 769
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Image1: TImage
+    Left = 24
+    Top = 24
+    Width = 721
+    Height = 305
+  end
+  object Button1: TButton
+    Left = 232
+    Top = 354
+    Width = 97
+    Height = 49
+    Caption = 'Rota'#231#227'o'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clMenuText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    OnMouseDown = Button1MouseDown
+  end
+  object Button2: TButton
+    Left = 616
+    Top = 354
+    Width = 97
+    Height = 49
+    Caption = 'Transla'#231#227'o'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Button3: TButton
+    Left = 488
+    Top = 354
+    Width = 97
+    Height = 49
+    Caption = 'Escala'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
+  end
+  object Button4: TButton
+    Left = 360
+    Top = 354
+    Width = 97
+    Height = 49
+    Caption = 'Reflex'#227'o'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Roboto'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 3
+  end
+  object Button5: TButton
+    Left = 8
+    Top = 354
+    Width = 105
+    Height = 49
+    Caption = 'Inserir Img'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 4
+    OnClick = Button5Click
+  end
+end

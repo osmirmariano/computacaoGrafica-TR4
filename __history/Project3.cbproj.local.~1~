@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2016/08/26 16:44:53.000.553,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2016/08/26 16:44:56.000.424,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>2016/09/13 10:45:03.000.265,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>2016/09/13 10:45:03.000.232,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2016/09/13 14:20:11.660,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2016/09/13 14:20:11.696,=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>2016/09/13 14:24:01.942,C:\Users\osmir\Documents\GitHub\computacaoGrafica-TR4\trabalho4.h=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.h</Transaction>
+    <Transaction>2016/09/13 14:24:01.942,C:\Users\osmir\Documents\GitHub\computacaoGrafica-TR4\trabalho4.dfm=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.dfm</Transaction>
+    <Transaction>2016/09/13 14:24:01.942,C:\Users\osmir\Documents\GitHub\computacaoGrafica-TR4\trabalho4.cpp=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Unit3.cpp</Transaction>
+    <Transaction>2016/09/13 14:24:03.890,C:\Users\osmir\Documents\GitHub\computacaoGrafica-TR4\Project3PCH1.h=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Project3PCH1.h</Transaction>
+    <Transaction>2016/09/13 14:24:05.537,C:\Users\osmir\Documents\GitHub\computacaoGrafica-TR4\Project3.cbproj=C:\Users\osmir\Documents\Embarcadero\Studio\Projects\Project3.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
