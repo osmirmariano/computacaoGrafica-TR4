@@ -17,9 +17,20 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm3::Button4Click(TObject *Sender)
+void __fastcall TForm3::SpeedButton6Click(TObject *Sender)
 {
-
+	Form3->Close();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
+{
+	Image1->Picture->LoadFromFile("cg.bmp"); // Carregando imagem
+	Image1->Stretch = true; //redimensiona
+	Image1->Refresh(); //atualiza
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
+{
 	float angle;
 	float newx, newy, x, y;
 
@@ -38,17 +49,17 @@ void __fastcall TForm3::Button4Click(TObject *Sender)
 	float cosine=(float)cos(radians);
 	float sine=(float)sin(radians);
 
-	float Point1x=(-SrcBitmap->Height*sine);
-	float Point1y=(SrcBitmap->Height*cosine);
-	float Point2x=(SrcBitmap->Width*cosine-SrcBitmap->Height*sine);
-	float Point2y=(SrcBitmap->Height*cosine+SrcBitmap->Width*sine);
-	float Point3x=(SrcBitmap->Width*cosine);
-	float Point3y=(SrcBitmap->Width*sine);
+	float Point1x=(-SrcBitmap->Height*sine);  //O ponto 1 é o ponto(0, bitmap->Width),
+	float Point1y=(SrcBitmap->Height*cosine); //O ponto 1 é o ponto(0, bitmap->Width),
+	float Point2x=(SrcBitmap->Width*cosine-SrcBitmap->Height*sine);  //o ponto 2 é o ponto(bitmap->Height, 0)
+	float Point2y=(SrcBitmap->Height*cosine+SrcBitmap->Width*sine);  //o ponto 2 é o ponto(bitmap->Height, 0)
+	float Point3x=(SrcBitmap->Width*cosine); //o ponto 3 é o ponto(bitmap->Width, bitmap->Height).
+	float Point3y=(SrcBitmap->Width*sine);   //o ponto 3 é o ponto(bitmap->Width, bitmap->Height).
 
-	float minx=min(0,min(Point1x,min(Point2x,Point3x)));
-	float miny=min(0,min(Point1y,min(Point2y,Point3y)));
-	float maxx=max(Point1x,max(Point2x,Point3x));
-	float maxy=max(Point1y,max(Point2y,Point3y));
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
 
 
 	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
@@ -64,11 +75,9 @@ void __fastcall TForm3::Button4Click(TObject *Sender)
 	  {
 		int SrcBitmapx=(int)((x+minx)*cosine+(y+miny)*sine);
 		int SrcBitmapy=(int)((y+miny)*cosine-(x+minx)*sine);
-		if(SrcBitmapx>=0&&SrcBitmapx<SrcBitmap->Width&&SrcBitmapy>=0&&
-			 SrcBitmapy<SrcBitmap->Height)
+		if(SrcBitmapx >=0 && SrcBitmapx < SrcBitmap->Width && SrcBitmapy >=0 && SrcBitmapy < SrcBitmap->Height)
 		{
-		  DestBitmap->Canvas->Pixels[x][y]=
-			  SrcBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapy];
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapy];
 		}
 	  }
 	}
@@ -78,51 +87,44 @@ void __fastcall TForm3::Button4Click(TObject *Sender)
 	delete SrcBitmap;
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm3::Button5Click(TObject *Sender)
+void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
 {
-	Image1->Picture->LoadFromFile("cg.bmp"); // Carregando imagem
-	Image1->Stretch = true; //redimensiona
-	Image1->Refresh(); //atualiza
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm3::Button2Click(TObject *Sender)
-{
-
-	ShowMessage("Entrou aqui");
-
-	/*float fator1, fator2;
-	float a, b;
-	fator1 = Edit2->Text.ToDouble();
-	fator2 = Edit3->Text.ToDouble();
+	double fator1, fator2;
+	int SrcBitmapx;
+	int SrcBitmapy;
 
 	Graphics::TBitmap *SrcBitmap = new Graphics::TBitmap;
 	Graphics::TBitmap *DestBitmap = new Graphics::TBitmap;
-	//SrcBitmap->LoadFromFile("cg.bmp");
+	SrcBitmap->LoadFromFile("cg.bmp");
 
-	ShowMessage("OI");
+	fator1 = Edit2->Text.ToDouble();
+	fator2 = Edit3->Text.ToDouble();
+
 	//toma cada pixel no bitmap de destino e obtem seu valor no bitmap de origem usando as mesmas fórmulas
-	for(int x = 0; x < DestBitmap->Width; x++)
+	for(int x = 0; x < IntToStr(Image1->Width); x++)
 	{
-	  for(int y = 0; y < DestBitmap->Height; y++)
+	  for(int y = 0; y < IntToStr(Image1->Height); y++)
 	  {
-
-		a = fator1*x;
-		b = fator2*y;
-		DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[a][b];
+			SrcBitmapx=(int)(fator1*x);
+			SrcBitmapy=(int)(fator2*y);
+			DestBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapx] = SrcBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapy];
+		//ShowMessage(DestBitmap->Canvas->Pixels[x][y]);
 	  }
 	}
+	ShowMessage(SrcBitmapx);
 	//Mostrar o bitmap escalonado
 	Image1->Picture->Bitmap = DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
-	*/
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TForm3::Button3Click(TObject *Sender)
+void __fastcall TForm3::SpeedButton5Click(TObject *Sender)
 {
-	ShowMessage(Edit1->Text));
+	   ShowMessage("TRANSLAÇÃO");
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
+{
+	 ShowMessage("REFLEXÃO");
+}
+//---------------------------------------------------------------------------
