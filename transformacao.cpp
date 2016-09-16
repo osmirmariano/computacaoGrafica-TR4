@@ -2,6 +2,7 @@
 
 #include <vcl.h>
 #pragma hdrstop
+
 #include <math.hpp>
 #define min(a, b)  (((a) < (b)) ? (a) : (b))
 #define max(a, b)  (((a) > (b)) ? (a) : (b))
@@ -15,11 +16,7 @@ TForm3 *Form3;
 __fastcall TForm3::TForm3(TComponent* Owner)
 	: TForm(Owner)
 {
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm3::SpeedButton6Click(TObject *Sender)
-{
-	Form3->Close();
+	Form3->Color = clWhite;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
@@ -29,8 +26,31 @@ void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
 	Image1->Refresh(); //atualiza
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm3::SpeedButton6Click(TObject *Sender)
+{
+	Form3->Close();
+}
+//---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 {
+	/*float angle;
+	angle = Edit1->Text.ToDouble();
+    float radians=(2*3.1416*angle)/360;
+
+	float cosine=(float)cos(radians);
+	float sine=(float)sin(radians);
+
+	for(int x = 0; x < IntToStr(Image1->Width); x++)
+	{
+	  for(int y = 0; y < IntToStr(Image1->Height); y++)
+	  {
+			int rx=(int)((x)*cosine+(y)*sine);
+			int ry=(int)((y)*cosine-(x)*sine);
+
+			Image1->Canvas->Pixels[x][y] = Image1->Canvas->Pixels[rx][ry];
+	  }
+	}     */
+
 	float angle;
 	float newx, newy, x, y;
 
@@ -39,28 +59,78 @@ void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 	newy = y * cos(angle) + x * sin(angle);
 
 	angle = Edit1->Text.ToDouble();
-	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
-	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
-	SrcBitmap->LoadFromFile("cg.bmp");
+	Graphics::TBitmap *rota=new Graphics::TBitmap;
+	Graphics::TBitmap *recebe=new Graphics::TBitmap;
+	rota->LoadFromFile("cg.bmp");
 
 	//Converter graus para radianos
 	float radians=(2*3.1416*angle)/360;
 
 	float cosine=(float)cos(radians);
 	float sine=(float)sin(radians);
+	//Definições do pontos corresponde ao retângulo da imagem, que são 4 pontos, porém o primeiro é (0,0)
+	float Point1x=(-rota->Height*sine);
+	float Point1y=(rota->Height*cosine);
+	float Point2x=(rota->Width*cosine-rota->Height*sine);
+	float Point2y=(rota->Height*cosine+rota->Width*sine);
+	float Point3x=(rota->Width*cosine);
+	float Point3y=(rota->Width*sine);
 
-	float Point1x=(-SrcBitmap->Height*sine);  //O ponto 1 é o ponto(0, bitmap->Width),
-	float Point1y=(SrcBitmap->Height*cosine); //O ponto 1 é o ponto(0, bitmap->Width),
-	float Point2x=(SrcBitmap->Width*cosine-SrcBitmap->Height*sine);  //o ponto 2 é o ponto(bitmap->Height, 0)
-	float Point2y=(SrcBitmap->Height*cosine+SrcBitmap->Width*sine);  //o ponto 2 é o ponto(bitmap->Height, 0)
-	float Point3x=(SrcBitmap->Width*cosine); //o ponto 3 é o ponto(bitmap->Width, bitmap->Height).
-	float Point3y=(SrcBitmap->Width*sine);   //o ponto 3 é o ponto(bitmap->Width, bitmap->Height).
-
+	//Definindo o tamanho máximo e mínimo
 	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
 	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
 	float maxx = max(Point1x,max(Point2x,Point3x));
 	float maxy = max(Point1y,max(Point2y,Point3y));
 
+
+	int valorWidth=(int)ceil(fabs(maxx)-minx);
+	int valorpHeight=(int)ceil(fabs(maxy)-miny);
+
+	recebe->Height = valorpHeight;
+	recebe->Width = valorWidth;
+
+	//toma cada pixel no bitmap de destino e obtem seu valor no bitmap de origem usando as mesmas fórmulas
+	for(int x=0; x < valorWidth; x++)
+	{
+	  for(int y=0; y < valorpHeight; y++)
+	  {
+		int rx=(int)((x+minx)*cosine+(y+miny)*sine);
+		int ry=(int)((y+miny)*cosine-(x+minx)*sine);
+		if(rx >= 0 && rx < rota->Width && ry >= 0 && ry < rota->Height)
+		{
+		  recebe->Canvas->Pixels[x][y]= rota->Canvas->Pixels[rx][ry];
+		}
+	  }
+	}
+	//Mostrar o bitmap girado
+	Image1->Picture->Bitmap=recebe;
+	delete recebe;
+	delete rota;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
+{
+	double fator1, fator2;
+
+	fator1 = Edit2->Text.ToDouble();
+	fator2 = Edit3->Text.ToDouble();
+
+	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
+	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
+	SrcBitmap->LoadFromFile("cg.bmp");
+
+	float Point1x=(Image1->Width*fator1);
+	float Point1y=(Image1->Height*fator2);
+	float Point2x=(Image1->Width*fator1);
+	float Point2y=(Image1->Height*fator2);
+	float Point3x=(Image1->Width*fator1);
+	float Point3y=(Image1->Height*fator2);
+
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
 
 	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
 	int DestBitmapHeight=(int)ceil(fabs(maxy)-miny);
@@ -68,16 +138,15 @@ void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 	DestBitmap->Height=DestBitmapHeight;
 	DestBitmap->Width=DestBitmapWidth;
 
-	//toma cada pixel no bitmap de destino e obtem seu valor no bitmap de origem usando as mesmas fórmulas
 	for(int x=0;x<DestBitmapWidth;x++)
 	{
 	  for(int y=0;y<DestBitmapHeight;y++)
 	  {
-		int SrcBitmapx=(int)((x+minx)*cosine+(y+miny)*sine);
-		int SrcBitmapy=(int)((y+miny)*cosine-(x+minx)*sine);
-		if(SrcBitmapx >=0 && SrcBitmapx < SrcBitmap->Width && SrcBitmapy >=0 && SrcBitmapy < SrcBitmap->Height)
+		int fx = (int)(fator1*x);
+		int	fy = (int)(fator2*y);
+		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
 		{
-		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapy];
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
 		}
 	  }
 	}
@@ -85,17 +154,10 @@ void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 	Image1->Picture->Bitmap=DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
-{
-	double fator1, fator2;
-	int SrcBitmapx;
-	int SrcBitmapy;
-
-	Graphics::TBitmap *SrcBitmap = new Graphics::TBitmap;
-	Graphics::TBitmap *DestBitmap = new Graphics::TBitmap;
-	SrcBitmap->LoadFromFile("cg.bmp");
+	//***********************************************************************
+	/*double fator1, fator2;
+	int fx;
+	int fy;
 
 	fator1 = Edit2->Text.ToDouble();
 	fator2 = Edit3->Text.ToDouble();
@@ -105,26 +167,208 @@ void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
 	{
 	  for(int y = 0; y < IntToStr(Image1->Height); y++)
 	  {
-			SrcBitmapx=(int)(fator1*x);
-			SrcBitmapy=(int)(fator2*y);
-			DestBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapx] = SrcBitmap->Canvas->Pixels[SrcBitmapx][SrcBitmapy];
-		//ShowMessage(DestBitmap->Canvas->Pixels[x][y]);
+			fx = (int)(fator1*x);
+			fy = (int)(fator2*y);
+			if(fator1 == 1 && fator2 == 1){
+				//Aumenta o tamanho
+			}
+			else{
+				if(fator1 < 1 && fator2 < 1){
+					//Diminui o Tamanho
+				}
+			}
+			Image1->Canvas->Pixels[x][y] = Image1->Canvas->Pixels[fx][fy];
 	  }
-	}
-	ShowMessage(SrcBitmapx);
-	//Mostrar o bitmap escalonado
-	Image1->Picture->Bitmap = DestBitmap;
-	delete DestBitmap;
-	delete SrcBitmap;
+	}   */
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton5Click(TObject *Sender)
 {
-	   ShowMessage("TRANSLAÇÃO");
+	double tx, ty;
+	int fx;
+	int fy;
+	tx = Edit4->Text.ToDouble();
+	ty = Edit5->Text.ToDouble();
+
+	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
+	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
+	SrcBitmap->LoadFromFile("cg.bmp");
+
+	float Point1x=(Image1->Width+tx);
+	float Point1y=(Image1->Height+ty);
+	float Point2x=(Image1->Width+tx);
+	float Point2y=(Image1->Height+ty);
+	float Point3x=(Image1->Width+tx);
+	float Point3y=(Image1->Height+ty);
+
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
+
+	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
+	int DestBitmapHeight=(int)ceil(fabs(maxy)-miny);
+
+	DestBitmap->Height=DestBitmapHeight;
+	DestBitmap->Width=DestBitmapWidth;
+
+	for(int x=0;x<DestBitmapWidth;x++)
+	{
+	  for(int y=0;y<DestBitmapHeight;y++)
+	  {
+		fx = (int)(tx+x);
+		fy = (int)(ty+y);
+
+		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
+		{
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
+		}
+	  }
+	}
+	//Mostrar o bitmap girado
+	Image1->Picture->Bitmap=DestBitmap;
+	delete DestBitmap;
+	delete SrcBitmap;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
 {
-	 ShowMessage("REFLEXÃO");
+
+	int fx, fy;
+
+	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
+	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
+	SrcBitmap->LoadFromFile("cg.bmp");
+
+	float Point1x=(Image1->Width*1);
+	float Point1y=(Image1->Height*(-1));
+	float Point2x=(Image1->Width*1);
+	float Point2y=(Image1->Height*(-1));
+	float Point3x=(Image1->Width*1);
+	float Point3y=(Image1->Height*(-1));
+
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
+
+	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
+	int DestBitmapHeight=(int)ceil(fabs(maxy)-miny);
+
+	DestBitmap->Height=DestBitmapHeight;
+	DestBitmap->Width=DestBitmapWidth;
+
+	for(int x=0;x<DestBitmapWidth;x++)
+	{
+	  for(int y=0;y<DestBitmapHeight;y++)
+	  {
+		fx = (int)(1*x);
+		fy = (int)((-1)*y);
+
+		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
+		{
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
+		}
+	  }
+	}
+	//Mostrar o bitmap girado
+	Image1->Picture->Bitmap=DestBitmap;
+	delete DestBitmap;
+	delete SrcBitmap;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm3::SpeedButton8Click(TObject *Sender)
+{
+	double fDes;
+	fDes = Edit6->Text.ToDouble();
+	int fx, fy;
+	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
+	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
+	SrcBitmap->LoadFromFile("cg.bmp");
+
+	float Point1x=(Image1->Width+fDes);
+	float Point1y=(Image1->Height);
+	float Point2x=(Image1->Width+fDes);
+	float Point2y=(Image1->Height);
+	float Point3x=(Image1->Width+fDes);
+	float Point3y=(Image1->Height);
+
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
+
+	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
+	int DestBitmapHeight=(int)ceil(fabs(maxy)-miny);
+
+	DestBitmap->Height=DestBitmapHeight;
+	DestBitmap->Width=DestBitmapWidth;
+
+	for(int x=0;x<DestBitmapWidth;x++)
+	{
+	  for(int y=0;y<DestBitmapHeight;y++)
+	  {
+		fx = (int)(x+fDes*y);
+		fy = (int)(y);
+
+		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
+		{
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
+		}
+	  }
+	}
+	//Mostrar o bitmap girado
+	Image1->Picture->Bitmap=DestBitmap;
+	delete DestBitmap;
+	delete SrcBitmap;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::SpeedButton9Click(TObject *Sender)
+{
+	double fDes;
+	fDes = Edit7->Text.ToDouble();
+	int fx, fy;
+	Graphics::TBitmap *SrcBitmap=new Graphics::TBitmap;
+	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
+	SrcBitmap->LoadFromFile("cg.bmp");
+
+	float Point1x=(Image1->Width+fDes);
+	float Point1y=(Image1->Height);
+	float Point2x=(Image1->Width+fDes);
+	float Point2y=(Image1->Height);
+	float Point3x=(Image1->Width+fDes);
+	float Point3y=(Image1->Height);
+
+	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
+	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
+	float maxx = max(Point1x,max(Point2x,Point3x));
+	float maxy = max(Point1y,max(Point2y,Point3y));
+
+	int DestBitmapWidth=(int)ceil(fabs(maxx)-minx);
+	int DestBitmapHeight=(int)ceil(fabs(maxy)-miny);
+
+	DestBitmap->Height=DestBitmapHeight;
+	DestBitmap->Width=DestBitmapWidth;
+
+	for(int x=0;x<DestBitmapWidth;x++)
+	{
+	  for(int y=0;y<DestBitmapHeight;y++)
+	  {
+		fx = (int)(x);
+		fy = (int)(y+fDes*x);
+
+		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
+		{
+		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
+		}
+	  }
+	}
+	//Mostrar o bitmap girado
+	Image1->Picture->Bitmap=DestBitmap;
+	delete DestBitmap;
+	delete SrcBitmap;
+}
+//---------------------------------------------------------------------------
+

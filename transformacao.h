@@ -9,6 +9,7 @@
 #include <Vcl.Forms.hpp>
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ExtCtrls.hpp>
+#include <Vcl.Graphics.hpp>
 //---------------------------------------------------------------------------
 class TForm3 : public TForm
 {
@@ -25,19 +26,37 @@ __published:	// IDE-managed Components
 	TSpeedButton *SpeedButton6;
 	TSplitter *Splitter1;
 	TSplitter *Splitter2;
-	TEdit *Edit1;
-	TEdit *Edit2;
-	TEdit *Edit3;
 	TLabel *Label4;
 	TLabel *Label5;
 	TLabel *Label6;
 	TLabel *Label7;
-	void __fastcall SpeedButton6Click(TObject *Sender);
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TEdit *Edit3;
+	TEdit *Edit4;
+	TEdit *Edit5;
+	TLabel *Label8;
+	TLabel *Label9;
+	TSplitter *Splitter3;
+	TSpeedButton *SpeedButton7;
+	TSpeedButton *SpeedButton8;
+	TLabel *Label10;
+	TEdit *Edit6;
+	TLabel *Label11;
+	TLabel *Label12;
+	TEdit *Edit7;
+	TSplitter *Splitter4;
+	TSpeedButton *SpeedButton9;
+	TLabel *Label13;
+	TLabel *Label14;
 	void __fastcall SpeedButton1Click(TObject *Sender);
+	void __fastcall SpeedButton6Click(TObject *Sender);
 	void __fastcall SpeedButton2Click(TObject *Sender);
 	void __fastcall SpeedButton3Click(TObject *Sender);
 	void __fastcall SpeedButton5Click(TObject *Sender);
 	void __fastcall SpeedButton4Click(TObject *Sender);
+	void __fastcall SpeedButton8Click(TObject *Sender);
+	void __fastcall SpeedButton9Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm3(TComponent* Owner);
