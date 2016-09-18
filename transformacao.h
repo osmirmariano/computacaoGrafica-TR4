@@ -49,6 +49,10 @@ __published:	// IDE-managed Components
 	TSpeedButton *SpeedButton9;
 	TLabel *Label13;
 	TLabel *Label14;
+	TImage *Image2;
+	TLabel *Label15;
+	TLabel *Label16;
+	TLabel *Label17;
 	void __fastcall SpeedButton1Click(TObject *Sender);
 	void __fastcall SpeedButton6Click(TObject *Sender);
 	void __fastcall SpeedButton2Click(TObject *Sender);
@@ -57,6 +61,7 @@ __published:	// IDE-managed Components
 	void __fastcall SpeedButton4Click(TObject *Sender);
 	void __fastcall SpeedButton8Click(TObject *Sender);
 	void __fastcall SpeedButton9Click(TObject *Sender);
+	void __fastcall SpeedButton7Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm3(TComponent* Owner);

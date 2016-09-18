@@ -17,6 +17,20 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 	: TForm(Owner)
 {
 	Form3->Color = clWhite;
+	SpeedButton2->Visible = false;
+	SpeedButton3->Visible = false;
+	SpeedButton4->Visible = false;
+	SpeedButton5->Visible = false;
+	SpeedButton7->Visible = false;
+	SpeedButton8->Visible = false;
+	SpeedButton9->Visible = false;
+	Edit1->Visible = false;
+	Edit2->Visible = false;
+	Edit3->Visible = false;
+	Edit4->Visible = false;
+	Edit5->Visible = false;
+	Edit6->Visible = false;
+	Edit7->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
@@ -24,6 +38,21 @@ void __fastcall TForm3::SpeedButton1Click(TObject *Sender)
 	Image1->Picture->LoadFromFile("cg.bmp"); // Carregando imagem
 	Image1->Stretch = true; //redimensiona
 	Image1->Refresh(); //atualiza
+	SpeedButton2->Visible = true;
+	SpeedButton3->Visible = true;
+	SpeedButton4->Visible = true;
+	SpeedButton5->Visible = true;
+	SpeedButton7->Visible = true;
+	SpeedButton8->Visible = true;
+	SpeedButton9->Visible = true;
+	Edit1->Visible = true;
+	Edit2->Visible = true;
+	Edit3->Visible = true;
+	Edit4->Visible = true;
+	Edit5->Visible = true;
+	Edit6->Visible = true;
+	Edit7->Visible = true;
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton6Click(TObject *Sender)
@@ -33,24 +62,6 @@ void __fastcall TForm3::SpeedButton6Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 {
-	/*float angle;
-	angle = Edit1->Text.ToDouble();
-    float radians=(2*3.1416*angle)/360;
-
-	float cosine=(float)cos(radians);
-	float sine=(float)sin(radians);
-
-	for(int x = 0; x < IntToStr(Image1->Width); x++)
-	{
-	  for(int y = 0; y < IntToStr(Image1->Height); y++)
-	  {
-			int rx=(int)((x)*cosine+(y)*sine);
-			int ry=(int)((y)*cosine-(x)*sine);
-
-			Image1->Canvas->Pixels[x][y] = Image1->Canvas->Pixels[rx][ry];
-	  }
-	}     */
-
 	float angle;
 	float newx, newy, x, y;
 
@@ -106,6 +117,7 @@ void __fastcall TForm3::SpeedButton2Click(TObject *Sender)
 	Image1->Picture->Bitmap=recebe;
 	delete recebe;
 	delete rota;
+	Edit1->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -120,12 +132,12 @@ void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
 	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
 	SrcBitmap->LoadFromFile("cg.bmp");
 
-	float Point1x=(Image1->Width*fator1);
-	float Point1y=(Image1->Height*fator2);
-	float Point2x=(Image1->Width*fator1);
-	float Point2y=(Image1->Height*fator2);
-	float Point3x=(Image1->Width*fator1);
-	float Point3y=(Image1->Height*fator2);
+	float Point1x=(Image1->Width);
+	float Point1y=(Image1->Height);
+	float Point2x=(Image1->Width);
+	float Point2y=(Image1->Height);
+	float Point3x=(Image1->Width);
+	float Point3y=(Image1->Height);
 
 	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
 	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
@@ -154,6 +166,8 @@ void __fastcall TForm3::SpeedButton3Click(TObject *Sender)
 	Image1->Picture->Bitmap=DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
+	Edit2->Clear();
+	Edit3->Clear();
 	//***********************************************************************
 	/*double fator1, fator2;
 	int fx;
@@ -229,6 +243,8 @@ void __fastcall TForm3::SpeedButton5Click(TObject *Sender)
 	Image1->Picture->Bitmap=DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
+	Edit4->Clear();
+	Edit5->Clear();
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
@@ -240,12 +256,12 @@ void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
 	Graphics::TBitmap *DestBitmap=new Graphics::TBitmap;
 	SrcBitmap->LoadFromFile("cg.bmp");
 
-	float Point1x=(Image1->Width*1);
-	float Point1y=(Image1->Height*(-1));
-	float Point2x=(Image1->Width*1);
-	float Point2y=(Image1->Height*(-1));
-	float Point3x=(Image1->Width*1);
-	float Point3y=(Image1->Height*(-1));
+	float Point1x=(Image1->Width);
+	float Point1y=(Image1->Height);
+	float Point2x=(Image1->Width);
+	float Point2y=(Image1->Height);
+	float Point3x=(Image1->Width);
+	float Point3y=(Image1->Height);
 
 	float minx = min(0,min(Point1x,min(Point2x,Point3x)));
 	float miny = min(0,min(Point1y,min(Point2y,Point3y)));
@@ -265,10 +281,10 @@ void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
 		fx = (int)(1*x);
 		fy = (int)((-1)*y);
 
-		if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
-		{
+		//if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
+		//{
 		  DestBitmap->Canvas->Pixels[x][y]= SrcBitmap->Canvas->Pixels[fx][fy];
-		}
+		//}
 	  }
 	}
 	//Mostrar o bitmap girado
@@ -322,6 +338,7 @@ void __fastcall TForm3::SpeedButton8Click(TObject *Sender)
 	Image1->Picture->Bitmap=DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
+	Edit6->Clear();
 }
 //---------------------------------------------------------------------------
 
@@ -369,6 +386,26 @@ void __fastcall TForm3::SpeedButton9Click(TObject *Sender)
 	Image1->Picture->Bitmap=DestBitmap;
 	delete DestBitmap;
 	delete SrcBitmap;
+	Edit7->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::SpeedButton7Click(TObject *Sender)
+{
+
+	int fx;
+	int fy;
+
+	//toma cada pixel no bitmap de destino e obtem seu valor no bitmap de origem usando as mesmas fórmulas
+	for(int x = 0; x < IntToStr(Image1->Width); x++)
+	{
+	  for(int y = 0; y < IntToStr(Image1->Height); y++)
+	  {
+		fx = (int)((-1)*x);
+		fy = (int)(1*y);
+		Image1->Canvas->Pixels[x][y] = Image1->Canvas->Pixels[fx][fy];
+	  }
+	}
 }
 //---------------------------------------------------------------------------
 
