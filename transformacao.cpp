@@ -278,8 +278,8 @@ void __fastcall TForm3::SpeedButton4Click(TObject *Sender)
 	{
 	  for(int y=0;y<DestBitmapHeight;y++)
 	  {
-		fx = (int)(1*x);
-		fy = (int)((-1)*y);
+		fx = (int)((-1)*x);
+		fy = (int)(1*y);
 
 		//if(fx >= 0 && fx < SrcBitmap->Width && fy >= 0 && fy < SrcBitmap->Height)
 		//{
@@ -401,11 +401,12 @@ void __fastcall TForm3::SpeedButton7Click(TObject *Sender)
 	{
 	  for(int y = 0; y < IntToStr(Image1->Height); y++)
 	  {
-		fx = (int)((-1)*x);
-		fy = (int)(1*y);
+		fx = (int)(1*x);
+		fy = (int)((-1)*y);
 		Image1->Canvas->Pixels[x][y] = Image1->Canvas->Pixels[fx][fy];
 	  }
 	}
 }
 //---------------------------------------------------------------------------
+
 

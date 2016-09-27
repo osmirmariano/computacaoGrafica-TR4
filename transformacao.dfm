@@ -2,7 +2,9 @@ object Form3: TForm3
   Left = 0
   Top = 0
   BorderIcons = []
-  Caption = 'Transforma'#231#227'o Linear - Rota'#231#227'o, Transla'#231#227'o, Reflex'#227'o e Escala'
+  Caption = 
+    'Transforma'#231#227'o Linear - Rota'#231#227'o, Transla'#231#227'o, Reflex'#227'o, Escala e C' +
+    'isalhamento'
   ClientHeight = 587
   ClientWidth = 773
   Color = clBtnFace
@@ -16,15 +18,16 @@ object Form3: TForm3
   TextHeight = 13
   object Image1: TImage
     Left = 354
-    Top = 179
-    Width = 329
-    Height = 236
+    Top = 158
+    Width = 356
+    Height = 257
   end
   object SpeedButton1: TSpeedButton
     Left = 661
     Top = 8
     Width = 49
     Height = 41
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -89,6 +92,7 @@ object Form3: TForm3
     Top = 24
     Width = 49
     Height = 41
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -153,6 +157,7 @@ object Form3: TForm3
     Top = 130
     Width = 49
     Height = 43
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -217,6 +222,7 @@ object Form3: TForm3
     Top = 350
     Width = 49
     Height = 43
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -281,6 +287,7 @@ object Form3: TForm3
     Top = 249
     Width = 49
     Height = 44
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -384,6 +391,7 @@ object Form3: TForm3
     Top = 8
     Width = 49
     Height = 41
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -561,6 +569,7 @@ object Form3: TForm3
     Top = 399
     Width = 50
     Height = 43
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -625,6 +634,7 @@ object Form3: TForm3
     Top = 482
     Width = 49
     Height = 43
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -739,6 +749,7 @@ object Form3: TForm3
     Top = 531
     Width = 48
     Height = 43
+    Cursor = crHandPoint
     Glyph.Data = {
       F6060000424DF606000000000000360000002800000018000000180000000100
       180000000000C0060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
@@ -2084,11 +2095,11 @@ object Form3: TForm3
       FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE0000}
   end
   object Label15: TLabel
-    Left = 529
+    Left = 494
     Top = 509
-    Width = 101
+    Width = 136
     Height = 14
-    Caption = 'PROF. TANILSON'
+    Caption = 'PROF. TANILSON DIAS'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clHotLight
     Font.Height = -12
