@@ -18,7 +18,6 @@ __published:	// IDE-managed Components
 	TSpeedButton *SpeedButton1;
 	TSpeedButton *SpeedButton2;
 	TSpeedButton *SpeedButton3;
-	TSpeedButton *SpeedButton4;
 	TSpeedButton *SpeedButton5;
 	TLabel *Label1;
 	TLabel *Label2;
@@ -38,7 +37,6 @@ __published:	// IDE-managed Components
 	TLabel *Label8;
 	TLabel *Label9;
 	TSplitter *Splitter3;
-	TSpeedButton *SpeedButton7;
 	TSpeedButton *SpeedButton8;
 	TLabel *Label10;
 	TEdit *Edit6;
@@ -47,21 +45,19 @@ __published:	// IDE-managed Components
 	TEdit *Edit7;
 	TSplitter *Splitter4;
 	TSpeedButton *SpeedButton9;
-	TLabel *Label13;
-	TLabel *Label14;
 	TImage *Image2;
 	TLabel *Label15;
 	TLabel *Label16;
 	TLabel *Label17;
+	TComboBox *ComboBox1;
 	void __fastcall SpeedButton1Click(TObject *Sender);
 	void __fastcall SpeedButton6Click(TObject *Sender);
 	void __fastcall SpeedButton2Click(TObject *Sender);
 	void __fastcall SpeedButton3Click(TObject *Sender);
 	void __fastcall SpeedButton5Click(TObject *Sender);
-	void __fastcall SpeedButton4Click(TObject *Sender);
 	void __fastcall SpeedButton8Click(TObject *Sender);
 	void __fastcall SpeedButton9Click(TObject *Sender);
-	void __fastcall SpeedButton7Click(TObject *Sender);
+	void __fastcall ComboBox1Change(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TForm3(TComponent* Owner);
