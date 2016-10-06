@@ -387,7 +387,7 @@ void __fastcall TForm3::ComboBox1Change(TObject *Sender)
 
 	  for (int y = 0; y < Image1->Height; y++) {
 		for (int x = 0; x < Image1->Width; x++) {
-			copia->Canvas->Pixels [Image1->Width-x][y+Image1->Height] = Image1->Canvas->Pixels[Image1->Width-x][Image1->Height-y];
+			copia->Canvas->Pixels[Image1->Width-x][y+Image1->Height] = Image1->Canvas->Pixels[Image1->Width-x][Image1->Height-y];
 		}
 	 }
 	 Image1->Picture->Bitmap = copia;

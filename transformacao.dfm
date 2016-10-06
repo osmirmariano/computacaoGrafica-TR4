@@ -5,8 +5,8 @@ object Form3: TForm3
   Caption = 
     'Transforma'#231#227'o Linear - Rota'#231#227'o, Transla'#231#227'o, Reflex'#227'o, Escala e C' +
     'isalhamento'
-  ClientHeight = 603
-  ClientWidth = 810
+  ClientHeight = 667
+  ClientWidth = 794
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +18,13 @@ object Form3: TForm3
   TextHeight = 13
   object Image1: TImage
     Left = 314
-    Top = 79
+    Top = 143
     Width = 451
     Height = 350
   end
   object SpeedButton1: TSpeedButton
     Left = 661
-    Top = 16
+    Top = 80
     Width = 49
     Height = 41
     Cursor = crHandPoint
@@ -89,7 +89,7 @@ object Form3: TForm3
   end
   object SpeedButton2: TSpeedButton
     Left = 217
-    Top = 32
+    Top = 96
     Width = 49
     Height = 41
     Cursor = crHandPoint
@@ -154,7 +154,7 @@ object Form3: TForm3
   end
   object SpeedButton3: TSpeedButton
     Left = 217
-    Top = 138
+    Top = 202
     Width = 49
     Height = 43
     Cursor = crHandPoint
@@ -219,7 +219,7 @@ object Form3: TForm3
   end
   object SpeedButton5: TSpeedButton
     Left = 217
-    Top = 257
+    Top = 321
     Width = 49
     Height = 44
     Cursor = crHandPoint
@@ -284,7 +284,7 @@ object Form3: TForm3
   end
   object Label1: TLabel
     Left = 25
-    Top = 43
+    Top = 107
     Width = 105
     Height = 18
     Caption = 'Valor do '#226'ngulo:'
@@ -297,7 +297,7 @@ object Form3: TForm3
   end
   object Label2: TLabel
     Left = 25
-    Top = 129
+    Top = 193
     Width = 119
     Height = 18
     Caption = 'Fator de Escala X:'
@@ -310,7 +310,7 @@ object Form3: TForm3
   end
   object Label3: TLabel
     Left = 24
-    Top = 169
+    Top = 233
     Width = 120
     Height = 18
     Caption = 'Fator de Escala Y:'
@@ -323,7 +323,7 @@ object Form3: TForm3
   end
   object SpeedButton6: TSpeedButton
     Left = 716
-    Top = 16
+    Top = 80
     Width = 49
     Height = 41
     Cursor = crHandPoint
@@ -388,7 +388,7 @@ object Form3: TForm3
   end
   object Splitter1: TSplitter
     Left = 24
-    Top = 79
+    Top = 143
     Width = 242
     Height = 6
     Align = alCustom
@@ -397,7 +397,7 @@ object Form3: TForm3
   end
   object Splitter2: TSplitter
     Left = 24
-    Top = 206
+    Top = 270
     Width = 242
     Height = 6
     Align = alCustom
@@ -406,7 +406,7 @@ object Form3: TForm3
   end
   object Label4: TLabel
     Left = 25
-    Top = 16
+    Top = 80
     Width = 62
     Height = 16
     Caption = 'ROTA'#199#195'O'
@@ -421,7 +421,7 @@ object Form3: TForm3
   end
   object Label5: TLabel
     Left = 25
-    Top = 107
+    Top = 171
     Width = 50
     Height = 16
     Caption = 'ESCALA'
@@ -436,7 +436,7 @@ object Form3: TForm3
   end
   object Label6: TLabel
     Left = 24
-    Top = 223
+    Top = 287
     Width = 86
     Height = 16
     Caption = 'TRANSLA'#199#195'O'
@@ -451,7 +451,7 @@ object Form3: TForm3
   end
   object Label7: TLabel
     Left = 24
-    Top = 349
+    Top = 413
     Width = 64
     Height = 16
     Caption = 'REFLEX'#195'O'
@@ -466,7 +466,7 @@ object Form3: TForm3
   end
   object Label8: TLabel
     Left = 25
-    Top = 246
+    Top = 310
     Width = 18
     Height = 18
     Caption = 'Tx'
@@ -479,7 +479,7 @@ object Form3: TForm3
   end
   object Label9: TLabel
     Left = 25
-    Top = 286
+    Top = 350
     Width = 18
     Height = 18
     Caption = 'Ty'
@@ -492,7 +492,7 @@ object Form3: TForm3
   end
   object Splitter3: TSplitter
     Left = 25
-    Top = 326
+    Top = 390
     Width = 242
     Height = 6
     Align = alCustom
@@ -501,7 +501,7 @@ object Form3: TForm3
   end
   object SpeedButton8: TSpeedButton
     Left = 216
-    Top = 490
+    Top = 554
     Width = 49
     Height = 43
     Cursor = crHandPoint
@@ -566,7 +566,7 @@ object Form3: TForm3
   end
   object Label10: TLabel
     Left = 25
-    Top = 502
+    Top = 566
     Width = 100
     Height = 18
     Caption = 'F. Deslocam X:'
@@ -579,7 +579,7 @@ object Form3: TForm3
   end
   object Label11: TLabel
     Left = 24
-    Top = 475
+    Top = 539
     Width = 99
     Height = 16
     Caption = 'CISALHAMENTO'
@@ -594,7 +594,7 @@ object Form3: TForm3
   end
   object Label12: TLabel
     Left = 25
-    Top = 548
+    Top = 620
     Width = 106
     Height = 18
     Caption = 'F. Deslocam. Y:'
@@ -607,7 +607,7 @@ object Form3: TForm3
   end
   object Splitter4: TSplitter
     Left = 24
-    Top = 462
+    Top = 526
     Width = 242
     Height = 6
     Align = alCustom
@@ -616,7 +616,7 @@ object Form3: TForm3
   end
   object SpeedButton9: TSpeedButton
     Left = 217
-    Top = 539
+    Top = 603
     Width = 48
     Height = 43
     Cursor = crHandPoint
@@ -681,7 +681,7 @@ object Form3: TForm3
   end
   object Image2: TImage
     Left = 636
-    Top = 482
+    Top = 546
     Width = 129
     Height = 105
     Picture.Data = {
@@ -1940,7 +1940,7 @@ object Form3: TForm3
   end
   object Label15: TLabel
     Left = 494
-    Top = 517
+    Top = 581
     Width = 136
     Height = 14
     Caption = 'PROF. TANILSON DIAS'
@@ -1953,7 +1953,7 @@ object Form3: TForm3
   end
   object Label16: TLabel
     Left = 475
-    Top = 537
+    Top = 601
     Width = 155
     Height = 14
     Caption = 'ALUNO: OSMIR MARIANO'
@@ -1966,7 +1966,7 @@ object Form3: TForm3
   end
   object Label17: TLabel
     Left = 543
-    Top = 557
+    Top = 629
     Width = 87
     Height = 14
     Caption = 'TRABALHO 04'
@@ -1977,9 +1977,24 @@ object Form3: TForm3
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label13: TLabel
+    Left = 81
+    Top = 24
+    Width = 640
+    Height = 25
+    Caption = 'IMPLEMENTA'#199#213'ES SOBRE TRANFORMA'#199#213'ES GEOM'#201'TRICAS '
+    Color = clBtnText
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clHotLight
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
   object Edit1: TEdit
     Left = 150
-    Top = 40
+    Top = 104
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -1992,7 +2007,7 @@ object Form3: TForm3
   end
   object Edit2: TEdit
     Left = 150
-    Top = 126
+    Top = 190
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2005,7 +2020,7 @@ object Form3: TForm3
   end
   object Edit3: TEdit
     Left = 150
-    Top = 166
+    Top = 230
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2018,7 +2033,7 @@ object Form3: TForm3
   end
   object Edit4: TEdit
     Left = 150
-    Top = 283
+    Top = 347
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2031,7 +2046,7 @@ object Form3: TForm3
   end
   object Edit5: TEdit
     Left = 150
-    Top = 243
+    Top = 307
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2044,7 +2059,7 @@ object Form3: TForm3
   end
   object Edit6: TEdit
     Left = 150
-    Top = 499
+    Top = 563
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2057,7 +2072,7 @@ object Form3: TForm3
   end
   object Edit7: TEdit
     Left = 150
-    Top = 545
+    Top = 609
     Width = 45
     Height = 26
     Font.Charset = DEFAULT_CHARSET
@@ -2070,7 +2085,7 @@ object Form3: TForm3
   end
   object ComboBox1: TComboBox
     Left = 25
-    Top = 380
+    Top = 444
     Width = 242
     Height = 26
     Font.Charset = DEFAULT_CHARSET
